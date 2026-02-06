@@ -5,6 +5,8 @@ import com.cinetrace.api.dto.ReviewResponseDTO;
 import com.cinetrace.api.services.ReviewService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +17,10 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping()
-    void createReview(@RequestBody @Valid ReviewDTO reviewDTO) {
-        reviewService.createReview(reviewDTO);
+    @PostMapping
+    ResponseEntity<ReviewResponseDTO> createReview(@RequestBody @Valid ReviewDTO reviewDTO) {
+        ReviewResponseDTO response = reviewService.createReview(reviewDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{movieId}")

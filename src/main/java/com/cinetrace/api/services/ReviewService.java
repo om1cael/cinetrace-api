@@ -16,7 +16,7 @@ public class ReviewService {
     @Autowired
     private ReviewRepository repository;
 
-    public void createReview(ReviewDTO reviewDTO) {
+    public ReviewResponseDTO createReview(ReviewDTO reviewDTO) {
         ReviewModel reviewModel = new ReviewModel();
 
         reviewModel.setMovieId(reviewDTO.movieId());
@@ -24,7 +24,15 @@ public class ReviewService {
         reviewModel.setContent(reviewDTO.content());
         reviewModel.setStars(reviewDTO.stars());
 
-        repository.save(reviewModel);
+        ReviewModel created = repository.save(reviewModel);
+
+        return new ReviewResponseDTO(
+                reviewModel.getId(),
+                reviewModel.getMovieId(),
+                reviewModel.getAuthor(),
+                reviewModel.getContent(),
+                reviewModel.getStars()
+        );
     }
 
     public List<ReviewResponseDTO> getAllReviews(Long movieId) {
