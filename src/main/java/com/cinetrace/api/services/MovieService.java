@@ -23,4 +23,8 @@ public class MovieService {
     public MovieDTO getMovieById(Long movieId) {
         return tmdbClient.getMovieById("Bearer " + apiKey, movieId);
     }
+
+    public List<MovieDTO> getMoviesBySearch(String query) {
+        return tmdbClient.searchForMovie("Bearer " + apiKey, query).results();
+    }
 }
