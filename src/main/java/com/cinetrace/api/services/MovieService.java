@@ -19,4 +19,8 @@ public class MovieService {
     public List<MovieDTO> getPopularMovies() {
         return tmdbClient.getPopularMovies("Bearer " + apiKey).results();
     }
+
+    public MovieDTO getMovieById(Long movieId) {
+        return tmdbClient.getMovieById("Bearer " + apiKey, movieId);
+    }
 }

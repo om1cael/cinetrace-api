@@ -4,6 +4,7 @@ import com.cinetrace.api.dto.MovieDTO;
 import com.cinetrace.api.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class MovieController {
     @GetMapping("/popular")
     private List<MovieDTO> getPopularMovies() {
         return movieService.getPopularMovies();
+    }
+
+    @GetMapping("/{id}")
+    private MovieDTO getMovieById(@PathVariable("id") Long id) {
+        return movieService.getMovieById(id);
     }
 }
