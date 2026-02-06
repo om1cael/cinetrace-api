@@ -1,6 +1,7 @@
 package com.cinetrace.api.services;
 
 import com.cinetrace.api.dto.ReviewDTO;
+import com.cinetrace.api.dto.ReviewResponseDTO;
 import com.cinetrace.api.models.ReviewModel;
 import com.cinetrace.api.repositories.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,13 +27,14 @@ public class ReviewService {
         repository.save(reviewModel);
     }
 
-    public List<ReviewDTO> getAllReviews(Long movieId) {
+    public List<ReviewResponseDTO> getAllReviews(Long movieId) {
         List<ReviewModel> repositoryReviews = repository.findByMovieId(movieId)
                 .orElseThrow(EntityNotFoundException::new);
 
-        ArrayList<ReviewDTO> reviews = new ArrayList<>();
+        ArrayList<ReviewResponseDTO> reviews = new ArrayList<>();
         for(ReviewModel reviewModel : repositoryReviews) {
-            ReviewDTO review = new ReviewDTO(
+            ReviewResponseDTO review = new ReviewResponseDTO(
+                reviewModel.getId(),
                 reviewModel.getMovieId(),
                 reviewModel.getAuthor(),
                 reviewModel.getContent(),

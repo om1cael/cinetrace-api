@@ -1,6 +1,7 @@
 package com.cinetrace.api.controllers;
 
 import com.cinetrace.api.dto.ReviewDTO;
+import com.cinetrace.api.dto.ReviewResponseDTO;
 import com.cinetrace.api.services.ReviewService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ReviewController {
     }
 
     @GetMapping("/{movieId}")
-    List<ReviewDTO> getAllReviews(@PathVariable("movieId") Long movieId) {
+    List<ReviewResponseDTO> getAllReviews(@PathVariable("movieId") Long movieId) {
         return reviewService.getAllReviews(movieId);
     }
 }
