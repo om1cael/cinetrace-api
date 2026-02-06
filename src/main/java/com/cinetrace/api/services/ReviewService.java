@@ -15,6 +15,17 @@ public class ReviewService {
     @Autowired
     private ReviewRepository repository;
 
+    public void createReview(ReviewDTO reviewDTO) {
+        ReviewModel reviewModel = new ReviewModel();
+
+        reviewModel.setMovieId(reviewDTO.movieId());
+        reviewModel.setAuthor(reviewDTO.author());
+        reviewModel.setContent(reviewDTO.content());
+        reviewModel.setStars(reviewDTO.stars());
+
+        repository.save(reviewModel);
+    }
+
     public List<ReviewDTO> getAllReviews(Long movieId) {
         List<ReviewModel> repositoryReviews = repository.findByMovieId(movieId)
                 .orElseThrow(EntityNotFoundException::new);
