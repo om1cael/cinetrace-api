@@ -21,11 +21,11 @@ public class ReviewService {
         ReviewModel created = repository.save(reviewModel);
 
         return new ReviewResponseDTO(
-                reviewModel.getId(),
-                reviewModel.getMovieId(),
-                reviewModel.getAuthor(),
-                reviewModel.getContent(),
-                reviewModel.getStars()
+                created.getId(),
+                created.getMovieId(),
+                created.getAuthor(),
+                created.getContent(),
+                created.getStars()
         );
     }
 
