@@ -22,6 +22,7 @@ public class ReviewService {
         ArrayList<ReviewDTO> reviews = new ArrayList<>();
         for(ReviewModel reviewModel : repositoryReviews) {
             ReviewDTO review = new ReviewDTO(
+                reviewModel.getMovieId(),
                 reviewModel.getAuthor(),
                 reviewModel.getContent(),
                 reviewModel.getStars()
