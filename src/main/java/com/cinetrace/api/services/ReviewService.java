@@ -17,13 +17,7 @@ public class ReviewService {
     private ReviewRepository repository;
 
     public ReviewResponseDTO createReview(ReviewDTO reviewDTO) {
-        ReviewModel reviewModel = new ReviewModel();
-
-        reviewModel.setMovieId(reviewDTO.movieId());
-        reviewModel.setAuthor(reviewDTO.author());
-        reviewModel.setContent(reviewDTO.content());
-        reviewModel.setStars(reviewDTO.stars());
-
+        ReviewModel reviewModel = new ReviewModel(reviewDTO);
         ReviewModel created = repository.save(reviewModel);
 
         return new ReviewResponseDTO(

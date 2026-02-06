@@ -1,5 +1,6 @@
 package com.cinetrace.api.models;
 
+import com.cinetrace.api.dto.ReviewDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -15,6 +16,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ReviewModel {
+    public ReviewModel(ReviewDTO reviewDTO) {
+        this.movieId = reviewDTO.movieId();
+        this.author = reviewDTO.author();
+        this.content = reviewDTO.content();
+        this.stars = reviewDTO.stars();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
