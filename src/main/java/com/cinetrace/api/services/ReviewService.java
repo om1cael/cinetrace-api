@@ -37,7 +37,8 @@ public class ReviewService {
                 created.getMovieId(),
                 created.getAuthor(),
                 created.getContent(),
-                created.getStars()
+                created.getStars(),
+                created.getCreatedAt()
         );
     }
 
@@ -52,7 +53,8 @@ public class ReviewService {
                 reviewModel.getMovieId(),
                 reviewModel.getAuthor(),
                 reviewModel.getContent(),
-                reviewModel.getStars()
+                reviewModel.getStars(),
+                reviewModel.getCreatedAt()
             );
 
             reviews.add(review);

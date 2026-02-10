@@ -9,6 +9,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "reviews")
@@ -41,4 +44,8 @@ public class ReviewModel {
     @Max(5)
     @NotNull
     private int stars;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private OffsetDateTime createdAt;
 }
