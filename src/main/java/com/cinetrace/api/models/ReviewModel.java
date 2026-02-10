@@ -40,7 +40,7 @@ public class ReviewModel {
     @NotNull
     private String content;
 
-    @Min(0)
+    @Min(1)
     @Max(5)
     @NotNull
     private int stars;
