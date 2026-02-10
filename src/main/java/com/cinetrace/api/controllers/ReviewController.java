@@ -17,9 +17,9 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping
-    ResponseEntity<ReviewResponseDTO> createReview(@RequestBody @Valid ReviewDTO reviewDTO) {
-        ReviewResponseDTO response = reviewService.createReview(reviewDTO);
+    @PostMapping("/{movieId}")
+    ResponseEntity<ReviewResponseDTO> createReview(@PathVariable("movieId") Long movieId, @RequestBody @Valid ReviewDTO reviewDTO) {
+        ReviewResponseDTO response = reviewService.createReview(movieId, reviewDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

@@ -24,12 +24,12 @@ public class ReviewService {
     @Value("${API_KEY}")
     private String apiKey;
 
-    public ReviewResponseDTO createReview(ReviewDTO reviewDTO) {
-        if(tmdbClient.getMovieById("Bearer " + apiKey, reviewDTO.movieId()) == null) {
+    public ReviewResponseDTO createReview(Long movieId, ReviewDTO reviewDTO) {
+        if(tmdbClient.getMovieById("Bearer " + apiKey, movieId) == null) {
             throw new EntityNotFoundException();
         }
 
-        ReviewModel reviewModel = new ReviewModel(reviewDTO);
+        ReviewModel reviewModel = new ReviewModel(movieId, reviewDTO);
         ReviewModel created = repository.save(reviewModel);
 
         return new ReviewResponseDTO(

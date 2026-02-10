@@ -16,8 +16,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ReviewModel {
-    public ReviewModel(ReviewDTO reviewDTO) {
-        this.movieId = reviewDTO.movieId();
+    public ReviewModel(Long movieId, ReviewDTO reviewDTO) {
+        this.movieId = movieId;
         this.author = reviewDTO.author();
         this.content = reviewDTO.content();
         this.stars = reviewDTO.stars();
